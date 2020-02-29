@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+int main()
+{
+    ll n, count = 0;
+    cin>>n;
+    ll sieve[n + 1];
+    for (int i = 0; i <= n; i++)
+    {
+        sieve[i] = 1;
+    }
+    sieve[0] = sieve[1] = 0;
+    for (int i = 2; i <= sqrt(n); i++)
+    {
+        if (sieve[i] == 1)
+        {
+            for (int j = i * i; j <= n; j += i)
+                sieve[j] = 0;
+        }
+    }
+    for (int i = 1; i <= n; i++)
+    {
+        if (sieve[i] == 1)
+        {
+            count++;
+        }
+    }
+    cout << count;
+
+    return 0;
+}
